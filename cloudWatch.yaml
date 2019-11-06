@@ -1,0 +1,35 @@
+Description: cpu utlization Alarm
+
+Resources:
+
+  MySNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      Subscription:
+        - Endpoint: aamir.shehzad3346875@gmail.com	
+          Protocol: email
+
+      TopicName: "aamirDiskmemTopic"
+
+  CwCpuAlram:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+        AlarmDescription: disk used more than 10%
+        AlarmActions:
+          - Ref: "MySNSTopic"
+        InsufficientDataActions: 
+          - Ref: "MySNSTopic"
+        Namespace: CWAgent
+        MetricName: disk_used_percent
+        Path: '/'
+        Statistic: Average
+        Period: '300'
+        EvaluationPeriods: '1'
+        Threshold: '10'
+        ComparisonOperator: GreaterThanThreshold
+        Dimensions:
+          - Name: InstanceId
+            Value: !ImportValue Webserver-EC2InstaneWBS
+
+
+
