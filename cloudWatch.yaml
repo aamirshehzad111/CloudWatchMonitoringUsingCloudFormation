@@ -29,6 +29,7 @@ Resources:
         ComparisonOperator: GreaterThanThreshold
         Dimensions:
           - Name: InstanceId
+            Path: '/'
             Value: !ImportValue Webserver-EC2InstaneWBS
 
 
