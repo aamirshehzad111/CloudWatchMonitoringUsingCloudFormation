@@ -45,7 +45,7 @@ Resources:
     Type: AWS::CloudFormation::Stack
     DependsOn: MyVpcStack
     Properties: 
-      TemplateURL: "https://cf-templates-10v3kub72h1yp-us-west-1.s3-us-west-1.amazonaws.com/Webserver.yaml"
+      TemplateURL: "https://cf-templates-10v3kub72h1yp-us-west-1.s3-us-west-1.amazonaws.com/WebserverForCwAgent.yaml"
       TimeoutInMinutes: 30
       Parameters: 
         RoleName: !Ref "RoleName"
